@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Global App Styles */
+.App {
+  min-height: 100vh;
+}
+
+/* Typography */
+.font-chivo {
+  font-family: 'Chivo', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* Table enhancements */
+.table-wrapper {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Animation utilities */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+/* Dropzone styles */
+.dropzone-active {
+  border-color: #0033CC !important;
+  background-color: rgba(0, 51, 204, 0.05);
+}
+
+/* Data cell highlighting */
+.data-cell-highlight {
+  background-color: rgba(0, 51, 204, 0.05);
+}
+
+/* Warning row */
+.warning-row {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* Confidence badges */
+.confidence-high {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+.confidence-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.confidence-low {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+/* Grand total card */
+.grand-total-card {
+  background: linear-gradient(135deg, #0033CC 0%, #001a66 100%);
+}
+
+/* Page thumbnail selected */
+.page-thumbnail-selected {
+  border-color: #0033CC;
+  box-shadow: 0 0 0 2px rgba(0, 51, 204, 0.2);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+/* Table row hover */
+.table-row-hover:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Input focus */
+input:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #0033CC;
+}
+
+/* Card hover effect */
+.card-hoverable {
+  transition: all 0.2s ease;
+}
+
+.card-hoverable:hover {
+  border-color: rgba(0, 51, 204, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Progress bar customization */
+.progress-bar {
+  background-color: #e5e7eb;
+}
+
+.progress-bar-fill {
+  background-color: #0033CC;
+  transition: width 0.3s ease;
+}
