@@ -6,3 +6,4 @@ pydantic
 python-dotenv
 Pillow
 PyMuPDF
+openpyxl
