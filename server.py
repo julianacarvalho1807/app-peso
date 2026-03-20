@@ -161,8 +161,6 @@ async def analyze_image_with_gpt_vision(image_base64: str):
         "notes": "AI temporarily disabled"
     }
     
-    
-Your task is to analyze images of cutting reports and extract table data.
 
 IMPORTANT RULES:
 1. Focus ONLY on the main data table
