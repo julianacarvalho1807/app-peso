@@ -574,7 +574,7 @@ async def export_excel(data: Dict[str, Any]):
 
 @api_router.get("/history", response_model=List[Dict[str, Any]])
 async def get_processing_history():
-    # Get processing history
+    
     results = await db.processing_results.find(
         {},
         {"_id": 0, "pages.thumbnail_base64": 0}  # Exclude large data
