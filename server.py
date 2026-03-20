@@ -159,10 +159,7 @@ async def analyze_image_with_gpt_vision(image_base64: str) -> Dict[str, Any]:
     if not api_key:
         raise HTTPException(status_code=500, detail="EMERGENT_LLM_KEY not configured")
     
-    chat = LlmChat(
-        api_key=api_key,
-        session_id=str(uuid.uuid4()),
-        system_message="""You are an expert at extracting data from industrial cutting report tables.
+    
 Your task is to analyze images of cutting reports and extract table data.
 
 IMPORTANT RULES:
