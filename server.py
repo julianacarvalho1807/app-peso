@@ -189,7 +189,7 @@ If no table is found or data is unreadable, return:
   "confidence": "low",
   "notes": "reason for failure"
 }
-    ).with_model("openai", "gpt-5.2")
+    
     
     try:
         image_content = ImageContent(image_base64=image_base64)
