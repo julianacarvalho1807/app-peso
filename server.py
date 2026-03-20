@@ -153,11 +153,13 @@ async def extract_pdf_pages_as_images(pdf_bytes: bytes) -> List[bytes]:
         logger.error(f"Error extracting PDF pages: {e}")
     return images
 
-async def analyze_image_with_gpt_vision(image_base64: str) -> Dict[str, Any]:
-    """Use GPT-5.2 Vision to analyze cutting report image"""
-    api_key = os.environ.get('EMERGENT_LLM_KEY', '')
-    if not api_key:
-        raise HTTPException(status_code=500, detail="EMERGENT_LLM_KEY not configured")
+async def analyze_image_with_gpt_vision(image_base64: str):
+    return {
+        "rows": [],
+        "reported_total": None,
+        "confidence": "low",
+        "notes": "AI temporarily disabled"
+    }
     
     
 Your task is to analyze images of cutting reports and extract table data.
