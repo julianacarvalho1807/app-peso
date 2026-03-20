@@ -81,7 +81,7 @@ class BulkRowUpdate(BaseModel):
 
 # Helper functions
 def parse_quantity(quantity_str: str) -> int:
-    """Extract the FIRST number from quantity format like '2/2', '17/1', '19/19'"""
+    # Extract the FIRST number from quantity format like '2/2', '17/1', '19/19'
     if not quantity_str:
         return 0
     # Clean the string
@@ -97,7 +97,7 @@ def parse_quantity(quantity_str: str) -> int:
     return 0
 
 def normalize_weight(weight_str: str) -> float:
-    """Normalize weight string to float, handling OCR errors"""
+    # Normalize weight string to float, handling OCR errors
     if not weight_str:
         return 0.0
     # Convert to lowercase and clean
@@ -118,11 +118,11 @@ def normalize_weight(weight_str: str) -> float:
     return 0.0
 
 def image_to_base64(image_bytes: bytes) -> str:
-    """Convert image bytes to base64 string"""
+    # Convert image bytes to base64 string
     return base64.b64encode(image_bytes).decode('utf-8')
 
 def create_thumbnail(image_bytes: bytes, max_size: int = 200) -> str:
-    """Create a thumbnail from image bytes and return as base64"""
+    # Create a thumbnail from image bytes and return as base64
     try:
         img = Image.open(io.BytesIO(image_bytes))
         img.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
@@ -137,7 +137,7 @@ def create_thumbnail(image_bytes: bytes, max_size: int = 200) -> str:
         return ""
 
 async def extract_pdf_pages_as_images(pdf_bytes: bytes) -> List[bytes]:
-    """Extract pages from PDF as images"""
+    # Extract pages from PDF as images
     images = []
     try:
         doc = fitz.open(stream=pdf_bytes, filetype="pdf")
@@ -188,7 +188,7 @@ If no table is found or data is unreadable, return:
   "reported_total": null,
   "confidence": "low",
   "notes": "reason for failure"
-}"""
+}
     ).with_model("openai", "gpt-5.2")
     
     try:
@@ -231,7 +231,7 @@ If no table is found or data is unreadable, return:
         }
 
 def process_extracted_data(extracted: Dict[str, Any], page_number: int) -> PageData:
-    """Process extracted data into PageData format"""
+    # Process extracted data into PageData format
     rows = []
     page_total = 0.0
     overall_confidence = extracted.get("confidence", "medium")
@@ -295,7 +295,7 @@ def process_extracted_data(extracted: Dict[str, Any], page_number: int) -> PageD
     )
 
 async def process_single_page(image_bytes: bytes, page_number: int) -> PageData:
-    """Process a single page image"""
+    # Process a single page image
     image_base64 = image_to_base64(image_bytes)
     thumbnail = create_thumbnail(image_bytes)
     
@@ -316,7 +316,7 @@ async def health():
 
 @api_router.post("/process", response_model=ProcessingResult)
 async def process_document(file: UploadFile = File(...)):
-    """Process uploaded PDF or image file"""
+    # Process uploaded PDF or image file
     import time
     start_time = time.time()
     
@@ -386,7 +386,7 @@ async def process_document(file: UploadFile = File(...)):
 
 @api_router.post("/process-multiple")
 async def process_multiple_images(files: List[UploadFile] = File(...)):
-    """Process multiple image files as separate pages"""
+    # Process multiple image files as separate pages
     import time
     start_time = time.time()
     
@@ -443,7 +443,7 @@ async def process_multiple_images(files: List[UploadFile] = File(...)):
 
 @api_router.post("/update-row")
 async def update_row(update: RowUpdate):
-    """Update a single row and recalculate totals"""
+    # Update a single row and recalculate totals
     # This endpoint allows manual correction
     return {
         "page_number": update.page_number,
@@ -455,7 +455,7 @@ async def update_row(update: RowUpdate):
 
 @api_router.post("/export-excel")
 async def export_excel(data: Dict[str, Any]):
-    """Export processing result to Excel"""
+    # Export processing result to Excel
     try:
         wb = openpyxl.Workbook()
         
